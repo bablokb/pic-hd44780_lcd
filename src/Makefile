@@ -13,6 +13,6 @@ EXTRA_ASM=delay.asm
 MODEL=12f675
 ARCH=pic14
 SDCC_ARGS=-DLCD_PRINT_X
-include ../rules.inc
+include rules.inc
 
 # --------------------------------------------------------------------------
