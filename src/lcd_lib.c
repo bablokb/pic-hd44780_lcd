@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------
-// Sample project hd44780_lcd
+// HD44780 library for PIC microcontrollers
 //
 // Write to LCD-display with a HD44780-controller (e.g. 2x16). The display
 // is used in 4-bit mode. Between the PIC and the display the project

@@ -1,5 +1,5 @@
 ; --------------------------------------------------------------------------
-; Sample project hd44780_lcd
+; HD44780 library for PIC microcontrollers
 ;
 ; Author: B-bablok
 ; https://github.com/bablokb/pic-hd44780_lcd

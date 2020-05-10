@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------
-// Sample project hd44780_lcd
+// HD44780 library for PIC microcontrollers
 //
 // Declaration of delay-functions
 //
