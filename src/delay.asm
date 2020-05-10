@@ -2,7 +2,7 @@
 ; Sample project hd44780_lcd
 ;
 ; Author: B-bablok
-; https://github.com/bablokb/pic-toolchain/src/hd44780_lcd
+; https://github.com/bablokb/pic-hd44780_lcd
 ;
 ; --------------------------------------------------------------------------
 #include   <P12f675.INC>

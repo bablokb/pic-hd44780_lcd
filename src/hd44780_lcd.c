@@ -6,7 +6,7 @@
 // uses a shift-register (74HC595).
 //
 // Author: Bernhard Bablok
-// https://github.com/bablokb/pic-toolchain/src/hd44780_lcd
+// https://github.com/bablokb/pic-hd44780_lcd
 //
 // --------------------------------------------------------------------------
 
