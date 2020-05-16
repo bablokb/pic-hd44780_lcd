@@ -18,3 +18,7 @@ Note that this is not a feature-complete implementation. If you need
 additional functionality, just take a look at the HD44780-datasheet and
 implement the necessary commands (which boils down to sending the relevent
 hex-codes down the line).
+
+Here an implementation on a stripboard:
+
+![](stripboard.jpg)
