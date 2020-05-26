@@ -9,7 +9,7 @@
 
 PROJECT=hd44780_lcd
 EXTRA_C=lcd_lib.c
-EXTRA_ASM=delay.asm
+EXTRA_ASM=lcd_delay.asm
 MODEL=12f675
 ARCH=pic14
 SDCC_ARGS=-DLCD_PRINT_X

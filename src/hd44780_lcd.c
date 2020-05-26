@@ -15,7 +15,7 @@
 #include <stdint.h> 
 
 #include "lcd_lib.h"
-#include "delay.h"
+#include "lcd_delay.h"
 
 // build with:
 // make build
