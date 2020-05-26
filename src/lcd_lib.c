@@ -158,4 +158,12 @@ void lcd_print_x(uint8_t value) {
   }
   lcd_write_data(c);
 }
+
+// --------------------------------------------------------------------------
+// print uint16_t in hex-format
+
+void lcd_print_x16(uint16_t value) {
+  lcd_print_x(value >> 8);
+  lcd_print_x(value &  0xFF);
+}
 #endif

@@ -42,7 +42,8 @@ static void init(void) {
 
 void main(void) {
 #ifdef LCD_PRINT_X
-  uint8_t counter=0;
+  uint8_t  counter=0;
+  uint16_t addr=0;
 #endif
   // Load calibration
   __asm
@@ -62,6 +63,11 @@ void main(void) {
   while (1) {
     lcd_pos(2,15);
     lcd_print_x(counter++);
+
+    lcd_pos(1,13);
+    addr = ~counter;
+    addr <<= 8;
+    lcd_print_x16(addr);
     delay_ms(250);
   }
 #else

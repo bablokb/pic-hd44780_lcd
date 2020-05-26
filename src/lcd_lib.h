@@ -32,6 +32,7 @@ void lcd_print_i(uint8_t value);
 #endif
 #ifdef LCD_PRINT_X
 void lcd_print_x(uint8_t value);
+void lcd_print_x16(uint16_t value);
 #endif
 #define lcd_clear() lcd_write_cmd(0x01)
 
