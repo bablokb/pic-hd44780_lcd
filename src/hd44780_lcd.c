@@ -11,7 +11,7 @@
 // --------------------------------------------------------------------------
 
 #define NO_BIT_DEFINES
-#include <pic12f675.h>
+#include <pic14regs.h>
 #include <stdint.h> 
 
 #include "lcd_lib.h"

@@ -18,7 +18,7 @@
 //
 // --------------------------------------------------------------------------
 
-#include <pic12f675.h>
+#include <pic14regs.h>
 #include "lcd_delay.h"
 #include "lcd_lib.h"
 
@@ -31,17 +31,17 @@ static void lcd_shift_out(uint8_t byte) {
 
   // write data to shift-register
   for (i=0;i<8;i++) {
-    PIN_DATA = ((byte>>i)&0x1);   // write bit value
-    PIN_CLK  = 1;                 // toggle clock pin
+    GP_DATA = ((byte>>i)&0x1);   // write bit value
+    GP_CLK  = 1;                 // toggle clock pin
     delay_10();
-    PIN_CLK  = 0;
+    GP_CLK  = 0;
     delay_10();
   }
 
   // enable LCD-read
-  PIN_ENABLE = 1;         // low->high triggers read
+  GP_ENABLE = 1;         // low->high triggers read
   delay_150();            // ...
-  PIN_ENABLE = 0;         // set back to high
+  GP_ENABLE = 0;         // set back to high
   delay_150();
 }
 
@@ -67,12 +67,12 @@ void lcd_write_data(uint8_t data) {
 
 void lcd_init(void) { 
   // Firstly make all pins output
-  PIN_ENABLE_TRISIO = 0;
-  PIN_DATA_TRISIO   = 0;
-  PIN_CLK_TRISIO    = 0;
-  PIN_ENABLE        = 0;
-  PIN_DATA          = 0;
-  PIN_CLK           = 0;
+  GP_ENABLE_TRISIO = 0;
+  GP_DATA_TRISIO   = 0;
+  GP_CLK_TRISIO    = 0;
+  GP_ENABLE        = 0;
+  GP_DATA          = 0;
+  GP_CLK           = 0;
 
   delay_ms(50);           // initial delay (wait for power-up)
   lcd_shift_out(0x03);    // init-sequence (3x)
