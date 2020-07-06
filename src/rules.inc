@@ -30,8 +30,8 @@ $(patsubst %.asm,%.o,$(EXTRA_ASM)): %.o: %.asm
 	gpasm -a inhx8m -p$(MODEL) -c $<
 
 $(PROJECT).hex: $(OBJS)
-	gplink -S2 -w -r -m -a inhx8m -I$(LIBDIR) -I$(LIBDIR_NONFREE) \
-                  -o $(PROJECT).hex $(OBJS) $(LIBS)
+	sdcc --use-non-free -m$(ARCH) -p$(MODEL) \
+             -Wl "-S2 -w -r -m" --out-fmt-ihx -o $(PROJECT).hex $(OBJS)
 
 # --- targets   ------------------------------------------------------------
 
