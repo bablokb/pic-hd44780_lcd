@@ -5,7 +5,6 @@
 ; https://github.com/bablokb/pic-hd44780_lcd
 ;
 ; --------------------------------------------------------------------------
-#include   <P12f675.INC>
 
         global  _delay_10, _delay_150, _delay_1000, _delay_ms
 
