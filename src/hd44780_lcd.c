@@ -34,7 +34,7 @@
   #define GPIO     PORTA
  #endif
 
-#ifdef __SDCC_PIC12F675
+#if defined __SDCC_PIC12F675 || defined __SDCC_PIC12F683
 __code uint16_t __at (_CONFIG) __configword = 
   _MCLRE_OFF & _PWRTE_ON & _WDT_OFF & _INTRC_OSC_NOCLKOUT & _BODEN_OFF;
 #elif __SDCC_PIC12F1840
