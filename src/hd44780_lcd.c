@@ -28,7 +28,6 @@
   #define CMCON      CMCON0
   #define _BODEN_OFF _BOD_OFF
 #elif __SDCC_PIC12F1840
-  #define CMCON    CM1CON0
   #define ANSEL    ANSELA
   #define TRISIO   TRISA
   #define GPIO     PORTA
@@ -36,10 +35,10 @@
 
 #if defined __SDCC_PIC12F675 || defined __SDCC_PIC12F683
 __code uint16_t __at (_CONFIG) __configword = 
-  _MCLRE_OFF & _PWRTE_ON & _WDT_OFF & _INTRC_OSC_NOCLKOUT & _BODEN_OFF;
+  _MCLRE_ON & _PWRTE_ON & _WDT_OFF & _INTRC_OSC_NOCLKOUT & _BODEN_OFF;
 #elif __SDCC_PIC12F1840
 __code uint16_t __at (_CONFIG1) __configword1 =
-  _MCLRE_OFF & _PWRTE_ON & _WDTE_OFF & _CLKOUTEN_OFF & _BOREN_OFF & _FOSC_INTOSC;
+  _MCLRE_ON & _PWRTE_ON & _WDTE_OFF & _CLKOUTEN_OFF & _BOREN_OFF & _FOSC_INTOSC;
 __code uint16_t __at (_CONFIG2) __configword2 = _LVP_OFF & _DEBUG_OFF;
 #endif
 
@@ -52,9 +51,11 @@ static void init(void) {
   __asm__ ("CLRWDT");            // clear WDT even if WDT is disabled
   ANSEL  = 0;                    // no analog input
   TRISIO = 0;                    // no input pins
-  CMCON  = 0x07;                 // disable comparator for GP0-GP2
 
-#ifdef __SDCC_PIC12F683
+#if defined __SDCC_PIC12F675
+  CMCON  = 0x07;                 // disable comparator for GP0-GP2
+#elif __SDCC_PIC12F683
+  CMCON  = 0x07;                 // disable comparator for GP0-GP2
   OSCCONbits.IRCF = 0b110;
 #elif __SDCC_PIC12F1840
   OSCCONbits.IRCF = 0b1101;
