@@ -10,37 +10,13 @@
 //
 // --------------------------------------------------------------------------
 
-#define NO_BIT_DEFINES
-#include <pic14regs.h>
+#include "picconfig.h"
 #include <stdint.h> 
 
 #include "lcd_lib.h"
 #include "lcd_delay.h"
 
-// build with:
-// make build
-
-// MCLR on, Power on Timer, no WDT, int-oscillator, 
-// no brown out
-
-#ifdef __SDCC_PIC12F675
-#elif __SDCC_PIC12F683
-  #define CMCON      CMCON0
-  #define _BODEN_OFF _BOD_OFF
-#elif __SDCC_PIC12F1840
-  #define ANSEL    ANSELA
-  #define TRISIO   TRISA
-  #define GPIO     PORTA
- #endif
-
-#if defined __SDCC_PIC12F675 || defined __SDCC_PIC12F683
-__code uint16_t __at (_CONFIG) __configword = 
-  _MCLRE_ON & _PWRTE_ON & _WDT_OFF & _INTRC_OSC_NOCLKOUT & _BODEN_OFF;
-#elif __SDCC_PIC12F1840
-__code uint16_t __at (_CONFIG1) __configword1 =
-  _MCLRE_ON & _PWRTE_ON & _WDTE_OFF & _CLKOUTEN_OFF & _BOREN_OFF & _FOSC_INTOSC;
-__code uint16_t __at (_CONFIG2) __configword2 = _LVP_OFF & _DEBUG_OFF;
-#endif
+CONFIG_WORDS
 
 ////////////////////////////////////////////////////////////////////////
 // Intialize registers
@@ -51,17 +27,8 @@ static void init(void) {
   __asm__ ("CLRWDT");            // clear WDT even if WDT is disabled
   ANSEL  = 0;                    // no analog input
   TRISIO = 0;                    // no input pins
-
-#if defined __SDCC_PIC12F675
-  CMCON  = 0x07;                 // disable comparator for GP0-GP2
-#elif __SDCC_PIC12F683
-  CMCON  = 0x07;                 // disable comparator for GP0-GP2
-  OSCCONbits.IRCF = 0b110;
-#elif __SDCC_PIC12F1840
-  OSCCONbits.IRCF = 0b1101;
-#endif
-
-  INTCON                 = 0;    // clear interrupt flag bits
+  INTCON = 0;                    // clear interrupt flag bits
+  CLOCK_4MHZ;
 }
 
 // --- main program   --------------------------------------------------------
@@ -72,16 +39,7 @@ void main(void) {
   uint16_t addr=0;
 #endif
 
-#ifdef __SDCC_PIC12F675
-  // Load calibration
-  __asm
-    bsf  STATUS, RP0
-    call 0x3ff    ; read value
-    movwf OSCCAL  ; set  value
-    bcf  STATUS, RP0
-  __endasm;
-#endif
-
+  INIT_SPECIAL;
   init();
   lcd_init();
   lcd_pos(1,4);

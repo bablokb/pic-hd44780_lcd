@@ -22,3 +22,7 @@ hex-codes down the line).
 Here an implementation on a stripboard:
 
 ![](stripboard.jpg)
+
+You need the header-files and makefile rules of my
+[pic-toolchain](https://github.com/bablokb/pic-toolchain)-project to build
+the programs.
