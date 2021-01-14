@@ -18,7 +18,6 @@
 //
 // --------------------------------------------------------------------------
 
-#include <pic14regs.h>
 #include "lcd_delay.h"
 #include "lcd_lib.h"
 
@@ -66,13 +65,13 @@ void lcd_write_data(uint8_t data) {
 // --------------------------------------------------------------------------
 
 void lcd_init(void) { 
-  // Firstly make all pins output
-  GP_ENABLE_TRISIO = 0;
-  GP_DATA_TRISIO   = 0;
-  GP_CLK_TRISIO    = 0;
-  GP_ENABLE        = 0;
-  GP_DATA          = 0;
-  GP_CLK           = 0;
+  // all pins are output and set to zero
+  bitclear(TRISIO,PIN_LCD_ENABLE);
+  bitclear(TRISIO,PIN_LCD_DATA);
+  bitclear(TRISIO,PIN_LCD_CLK);
+  GP_ENABLE = 0;
+  GP_DATA   = 0;
+  GP_CLK    = 0;
 
   delay_ms(50);           // initial delay (wait for power-up)
   lcd_shift_out(0x03);    // init-sequence (3x)

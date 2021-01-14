@@ -6,11 +6,11 @@
 //
 // --------------------------------------------------------------------------
 
-#include <pic14regs.h>
-#include <stdint.h>
-
 #ifndef __LCD_H
 #define __LCD_H
+
+#include "picconfig.h"
+#include <stdint.h>
 
 // Define Pins
 #ifndef PIN_LCD_ENABLE
@@ -23,19 +23,9 @@
   #define PIN_LCD_DATA 2
 #endif
 
-#ifdef _RA0
-  #define GP     RA
-  #define TRISIO TRISA
-#endif
-
 #define GP_ENABLE  _CONCAT(GP,PIN_LCD_ENABLE)   // Enable pin for LCD
 #define GP_CLK     _CONCAT(GP,PIN_LCD_CLK)      // Serial clock pin
 #define GP_DATA    _CONCAT(GP,PIN_LCD_DATA)     // Serial data pin
-
-// Define Pins direction registrers
-#define GP_ENABLE_TRISIO _CONCAT(TRISIO,PIN_LCD_ENABLE)
-#define GP_CLK_TRISIO    _CONCAT(TRISIO,PIN_LCD_CLK)
-#define GP_DATA_TRISIO   _CONCAT(TRISIO,PIN_LCD_DATA)
 
 // Function Declarations
 void lcd_write_cmd(uint8_t cmd);
