@@ -16,7 +16,7 @@
 #include "lcd_lib.h"
 #include "lcd_delay.h"
 
-CONFIG_WORDS
+CONFIG_WORDS;
 
 ////////////////////////////////////////////////////////////////////////
 // Intialize registers
