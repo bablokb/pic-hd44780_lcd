@@ -25,8 +25,8 @@ static void init(void) {
   // configure registers
 
   __asm__ ("CLRWDT");            // clear WDT even if WDT is disabled
-  ANSEL  = 0;                    // no analog input
-  TRISIO = 0;                    // no input pins
+  ANSELA = 0;                    // no analog input
+  TRISA  = 0;                    // no input pins
   INTCON = 0;                    // clear interrupt flag bits
   CLOCK_4MHZ;
 }

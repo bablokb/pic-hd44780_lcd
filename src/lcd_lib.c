@@ -66,9 +66,9 @@ void lcd_write_data(uint8_t data) {
 
 void lcd_init(void) { 
   // all pins are output and set to zero
-  bitclear(TRISIO,PIN_LCD_ENABLE);
-  bitclear(TRISIO,PIN_LCD_DATA);
-  bitclear(TRISIO,PIN_LCD_CLK);
+  bitclear(TRISA,PIN_LCD_ENABLE);
+  bitclear(TRISA,PIN_LCD_DATA);
+  bitclear(TRISA,PIN_LCD_CLK);
   GP_ENABLE = 0;
   GP_DATA   = 0;
   GP_CLK    = 0;

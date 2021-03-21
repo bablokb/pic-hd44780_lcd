@@ -23,9 +23,9 @@
   #define PIN_LCD_DATA 2
 #endif
 
-#define GP_ENABLE  _CONCAT(GP,PIN_LCD_ENABLE)   // Enable pin for LCD
-#define GP_CLK     _CONCAT(GP,PIN_LCD_CLK)      // Serial clock pin
-#define GP_DATA    _CONCAT(GP,PIN_LCD_DATA)     // Serial data pin
+#define GP_ENABLE  _CONCAT(RA,PIN_LCD_ENABLE)   // Enable pin for LCD
+#define GP_CLK     _CONCAT(RA,PIN_LCD_CLK)      // Serial clock pin
+#define GP_DATA    _CONCAT(RA,PIN_LCD_DATA)     // Serial data pin
 
 // Function Declarations
 void lcd_write_cmd(uint8_t cmd);
